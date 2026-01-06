@@ -1,14 +1,30 @@
+import type { Metadata } from "next";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 
-export const metadata = {
-  title: "KKN Sosialisasi Kesehatan Mental",
-  description: "Landing page KKN tentang kesehatan mental",
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const poppins = Poppins({ 
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-poppins"
+});
+
+export const metadata: Metadata = {
+  title: "Sosialisasi Kesehatan Mental | KKN Mental Health",
+  description: "Mari bersama-sama memahami pentingnya kesehatan mental dan menciptakan lingkungan yang suportif untuk kesejahteraan bersama.",
+  keywords: "kesehatan mental, mental health, sosialisasi, KKN, awareness",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="id">
-      <body className="bg-gray-50 text-gray-800 font-sans">{children}</body>
+    <html lang="id" className="scroll-smooth">
+      <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }
